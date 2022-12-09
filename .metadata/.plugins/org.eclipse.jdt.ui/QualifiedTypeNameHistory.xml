@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="dao.hoadondao"/>
+    <fullyQualifiedTypeName name="Bo.Giohang"/>
+    <fullyQualifiedTypeName name="javax.websocket.Session"/>
+    <fullyQualifiedTypeName name="Bo.hoadonbo"/>
+    <fullyQualifiedTypeName name="bean.hoadonbean"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="bean.giohangbean"/>
+    <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.MessageSend"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="jobdao.ACCdao"/>
+    <fullyQualifiedTypeName name="org.bson.conversions.Bson"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="jobbo.ACCbo"/>
+    <fullyQualifiedTypeName name="jobbean.ACCbean"/>
+    <fullyQualifiedTypeName name="bean.loaibean"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="com.mongodb.client.model.Filters"/>
+    <fullyQualifiedTypeName name="Bo.loaibo"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.bson.codecs.CollectibleCodec"/>
+    <fullyQualifiedTypeName name="com.mongodb.client.MongoCollection"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="bean.userbean"/>
+    <fullyQualifiedTypeName name="Bo.sachbo"/>
+    <fullyQualifiedTypeName name="bean.sachbean"/>
+</qualifiedTypeNameHistroy>

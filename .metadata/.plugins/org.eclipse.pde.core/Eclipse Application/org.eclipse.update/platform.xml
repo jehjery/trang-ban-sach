@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1670377465373" transient="false" version="3.0">
+<site enabled="true" policy="USER-EXCLUDE" updateable="true" url="platform:/base/">
+<feature id="org.eclipse.justj.openjdk.hotspot.jre.full" url="features/org.eclipse.justj.openjdk.hotspot.jre.full_18.0.1.v20220515-1614/" version="18.0.1.v20220515-1614">
+</feature>
+<feature id="org.eclipse.oomph.setup" url="features/org.eclipse.oomph.setup_1.27.0.v20221125-1553/" version="1.27.0.v20221125-1553">
+</feature>
+<feature id="org.eclipse.oomph.setup.core" url="features/org.eclipse.oomph.setup.core_1.26.0.v20221125-1553/" version="1.26.0.v20221125-1553">
+</feature>
+<feature id="org.eclipse.oomph.p2" url="features/org.eclipse.oomph.p2_1.25.0.v20221125-1553/" version="1.25.0.v20221125-1553">
+</feature>
+</site>
+</config>

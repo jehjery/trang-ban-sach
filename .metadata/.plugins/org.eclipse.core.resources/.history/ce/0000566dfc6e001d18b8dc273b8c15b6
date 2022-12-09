@@ -1,0 +1,23 @@
+package sena;
+
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+
+public class testsena {
+	static String PERSIONuri    = "http://somewhere/JohnSmith";
+	static String fullName     = "John Smith";
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+		// create an empty Model
+		Model model = ModelFactory.createDefaultModel();
+
+		// create the resource
+		Resource johnSmith = model.createResource(personURI);
+
+		// add the property
+		johnSmith.addProperty(VCARD.FN, fullName);
+	}
+
+}

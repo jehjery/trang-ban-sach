@@ -1,0 +1,27 @@
+package sena;
+
+import javax.annotation.Resource;
+
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.vocabulary.VCARD;
+
+public class testsena {
+
+
+	public static void main(String[] args) {
+		// some definitions
+	static String personURI    = "http://somewhere/JohnSmith";
+	static String fullName     = "John Smith";
+
+		// create an empty Model
+		Model model = ModelFactory.createDefaultModel();
+
+		// create the resource
+		Resource johnSmith = (Resource) model.createResource(personURI);
+
+		// add the property
+		johnSmith.addProperty(VCARD.FN, fullName);
+
+}
+}
