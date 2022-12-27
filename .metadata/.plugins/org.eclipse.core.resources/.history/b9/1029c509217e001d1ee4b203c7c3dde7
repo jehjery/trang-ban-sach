@@ -1,0 +1,54 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+
+import jobbean.CartBean;
+
+public class CartBo {
+   public ArrayList<CartBean> ds= new ArrayList<CartBean>();
+	   
+	   public ArrayList<CartBean> getds(){
+		   return ds;
+	   }
+	   
+	   
+	    public void Them(String masp, String tensp, long soluong, long gia,  String anh) {
+	    	if (masp!=null) 
+	    			{		
+	    		for(CartBean g: ds)
+	    			if(g.getMasp().equals(masp)) 
+	    			{
+	    				g.setSoluong(soluong+ g.getSoluong());
+	    				return;
+	    			}
+	    		ds.add( new CartBean(masp, tensp, soluong, gia, anh) );
+	    			}
+	    }
+	    
+	    public long TongTien() {
+	    	long s=0;
+	    	  for(CartBean g: ds)
+	    		  s=s+g.getThanhtien();
+	    	  return s;
+	    }
+	    public void remove(String masach ) {
+	    	if (masach!=null) 
+	    	{		for(CartBean g: ds)
+	    			if(g.getMasp().equals(masach)) {
+	    				ds.remove(g);
+	    				return;
+	    			}
+	    	}
+		}
+	    public void Up(String masach, long soluong ) {
+	    	if (masach!=null) 
+	    	{		for(CartBean g: ds)
+	    			if(g.getMasp().equals(masach)) {
+	    				if(soluong<=g.getSoluong()) {g.setSoluong(soluong);}
+	    				return;
+	    			}
+	    	}
+	    }
+	    }
+	  

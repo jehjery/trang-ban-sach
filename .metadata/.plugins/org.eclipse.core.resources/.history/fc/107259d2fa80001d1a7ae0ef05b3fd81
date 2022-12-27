@@ -1,0 +1,73 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jobbean.ACCbean;
+import jobbean.sanphambean;
+import jobbo.ACCbo;
+
+/**
+ * Servlet implementation class Suaprofile
+ */
+@WebServlet("/Suaprofile")
+public class Suaprofile extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Suaprofile() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+	    String tendangnhap=request.getParameter("tendangnhap");
+		String matkhau=request.getParameter("matkhau");
+		String fullname=request.getParameter("fullname");
+		String email=request.getParameter("email");
+		String ngay=request.getParameter("ngay");
+		String thang=request.getParameter("thang");
+		String nam=request.getParameter("nam");
+		String gioitinh=request.getParameter("gioitinh");
+		ACCbo a= new ACCbo();
+		ArrayList<ACCbean> listsach= a.findAll();
+		for (ACCbean a1: listsach)
+			{		
+				if( (tendangnhap.equals(a1.getTendangnhap() )))
+				{
+				 
+				 RequestDispatcher rd1=request.getRequestDispatcher("ITEMcontroller");
+				 rd1.forward(request, response);
+				break;
+				}
+		
+			}
+		RequestDispatcher rd1=request.getRequestDispatcher("ITEMcontroller");
+		rd1.forward(request, response);
+	}
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

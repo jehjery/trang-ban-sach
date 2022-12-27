@@ -1,0 +1,94 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jobbean.blogbean;
+import jobbo.blogBo;
+import jobbo.blogbo;
+
+/**
+ * Servlet implementation class Themblog
+ */
+@WebServlet("/Themblog")
+public class Themblog extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Themblog() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		blogBo blog= new blogBo();
+		ArrayList<blogbean> list = blog.findAll();
+		int d=0;	
+	    String mablog=request.getParameter("mablog");
+		String tieude=request.getParameter("tieude");
+		String phude=request.getParameter("phude");
+		String tacgia=request.getParameter("tacgia");
+		String soluong=request.getParameter("soluong");
+		String gia=request.getParameter("gia");
+		String anh=request.getParameter("Anh");
+	
+
+
+
+		if(maloai==null)
+		{
+			 RequestDispatcher rd1=request.getRequestDispatcher("ThemItem.jsp");
+			 rd1.forward(request, response);
+		}
+		else
+		{
+			for (blogbean a: list)
+			{		
+				if ( (maloai.equals(a.getMaloai()) && (mablog.equals(a.getMasp())) ) )
+					{
+					d++;
+					int soluongint = Integer.parseInt(soluong);
+					a.setSoluong(a.getSoluong()+soluongint);
+					}
+			}
+		if (d==0) 
+				{
+				 blog.
+				 RequestDispatcher rd1=request.getRequestDispatcher("ITEMcontroller");
+				 rd1.forward(request, response);
+				 
+				}
+				 //}else //Neu dang nhap sai
+				 else	
+				 {
+					 RequestDispatcher rd1=request.getRequestDispatcher("ITEMcontroller");
+					 rd1.forward(request, response);
+				 }
+		}
+		
+		}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

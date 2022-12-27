@@ -16,6 +16,7 @@ import connectDB.connectDB;
 public class loaidao {
 	MongoDatabase database = connectDB.getInstance();
 	MongoCollection<Document> Collection = database.getCollection("tbLoaiSach");
+	
 	public ArrayList<loaibean> getloai() {
 		// TODO Auto-generated method stub
 		return null;

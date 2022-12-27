@@ -1,0 +1,69 @@
+
+<%@page import="jobbean.hoadonbean"%>
+<%@page import="bean.hoadonbean"%>
+<%@page import="Bo.hoadonbo"%>
+<%@page import="Bo.loaibo"%>
+<%@page import="Bo.Giohang"%>
+<%@page import="bean.giohangbean"%>
+<%@page import="Bo.Giohang"%>
+<%@page import="Bo.sachbo"%>
+<%@page import="Bo.loaibo"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="bean.sachbean"%>
+<%@page import="dao.sachdao"%>
+<%@page import="bean.loaibean"%>
+
+
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.time.LocalDate"%>
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+   
+
+
+ 
+<%if( request.getAttribute("dssachmua")!=null ){ %>
+ <table class="table giohang" style=" margin: 100px 25% 0 25%;    display: list-item;" >
+						<thead>
+							<tr>
+								<th style="text-align: center;"	>Mã sách</th>
+								<th style="text-align: center;">Hình Ảnh</th>
+								<th style="text-align: center;">Tên sách</th>
+								<th style="text-align: center;"	>Giá cả</th>
+								<th style="text-align: center;">Số lượng mua</th>
+								<th style="text-align: center;">Thành tiền</th>
+							</tr>
+						</thead>
+			     <% 
+			     	ArrayList<giohangbean> listsach = (ArrayList<giohangbean>) request.getAttribute("dssachmua");
+			     	for(giohangbean a: listsach){%>  
+				   		     <tr>
+						   		 <td style="text-align: center;"><%=a.getMasach()%></td>
+					   			 <td style="text-align: center;"><img width = "100px" src="<%=a.getAnh()%>"></td>
+						   		 <td style="text-align: center;"><%=a.getTensach()%></td>
+						   		 <td style="text-align: center;"><%=a.getGia()%></td>
+						   		 <td style="text-align: center;"><%=a.getSoluong()%></td>
+						   		 <td style="text-align: center;"><%=a.getThanhtien()%></td>
+					   		 </tr>
+					   	<%} %>
+					    	<%} %>
+</table>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 <%@page import="Bo.Giohang"%>
 <%@page import="bean.giohangbean"%>
 <%@page import="Bo.loaibo"%>
@@ -54,7 +55,7 @@
     </ul>
        <div valign="top" style="display:inline-block;  text-align:center;">
 	<form action="timkiem" method="post" style="display:inline-flex; margin-top: 5px;">
-      <input style="color: black;padding:8px 400px 8px 8px;" name="maloai" type="text"  placeholder="Tìm Kiếm"> <br>
+      <input style="color: black;padding:8px 400px 8px 8px;" name="key" type="text"  placeholder="Tìm Kiếm"> <br>
       <input style="height: 43px;"  class="btn btn-warning "name="butdn" type="submit" value="Tìm">
    	</form>
 		</div>
@@ -65,7 +66,7 @@
       	<li><a href="dangky"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li> 
       <li><a href="ktdn"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
     		<%}else {%>
-    			 <li><a href="ktdn" <% request.setAttribute("lg", "o"); %>><span class="glyphicon glyphicon-log-in"></span> Đăng Xuất</a></li>
+    			 <li><a href="ktdn"<% request.setAttribute("lg", "o"); %>><span class="glyphicon glyphicon-log-in"></span> Đăng Xuất</a></li>
     			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> hi <%= session.getAttribute("dn") %></a></li> 
     			
     		<%} %>

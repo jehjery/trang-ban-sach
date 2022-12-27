@@ -1,7 +1,0 @@
-package jobbean;
-
-public class ACCbean {
-	private String tendangnhap;
-	private String matkhau;
-	private int solandang;
-}

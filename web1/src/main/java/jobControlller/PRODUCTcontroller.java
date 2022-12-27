@@ -1,0 +1,66 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jobbean.likerbean;
+import jobbean.sanphambean;
+import jobbo.likerbo;
+import jobbo.sanphambo;
+
+/**
+ * Servlet implementation class PRODUCTcontroller
+ */
+@WebServlet("/PRODUCTcontroller")
+public class PRODUCTcontroller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PRODUCTcontroller() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String key=request.getParameter("masp");	
+		String maloai=request.getParameter("maloai");
+		likerbo spbo= new likerbo();
+		ArrayList<likerbean> listhd = spbo.findAll();
+		request.setAttribute("liker", listhd);
+		sanphambo sbo= new sanphambo();
+		ArrayList<sanphambean> ds= sbo.findkey(maloai);
+		
+		for (sanphambean a:ds) 
+		{
+			if (a.getMasp().equals(key)) 
+			{
+				request.setAttribute("spPRODUCT", a);	
+				request.setAttribute("list", ds);	
+				request.getRequestDispatcher("PRODUCT.jsp").forward(request, response);
+			}
+		}
+		request.getRequestDispatcher("HOME.jsp").forward(request, response);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -11,7 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import jobbean.ACCbean;
+import jobbean.blogbean;
+import jobbean.hoadonbean;
+import jobbean.loaibean;
+import jobbean.sanphambean;
 import jobbo.ACCbo;
+import jobbo.blogBo;
+import jobbo.hoadonbo;
+import jobbo.loaibo;
+import jobbo.sanphambo;
 
 /**
  * Servlet implementation class testACC
@@ -32,11 +40,30 @@ public class testACC extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		hoadonbo a= new hoadonbo();
+		ArrayList<hoadonbean> listhd= a.findAll();
+		request.setAttribute("hd", listhd);
 		
-		ACCbo lbo = new ACCbo();
-		ArrayList<ACCbean> list = lbo.findAll();
+		ACCbo ac = new ACCbo();
+		ArrayList<ACCbean> list = ac.findAll();
 //		System.out.println(list.size());
 		request.setAttribute("acc", list);
+		
+		// lay ds blog
+		blogBo blog = new blogBo();
+		ArrayList<blogbean> listblog = blog.findAll();
+		request.setAttribute("blog", listblog);
+		
+		// lay ds loai
+		loaibo lbo= new loaibo();
+		ArrayList<loaibean> listloai = lbo.findAll();
+		request.setAttribute("loai", listloai);
+		
+		// lay ds san pham
+		sanphambo spbo= new sanphambo();
+		ArrayList<sanphambean> listsp = spbo.findAll();
+		request.setAttribute("sp", listsp);
+		
 		request.getRequestDispatcher("all.jsp").forward(request, response);
 	}
 

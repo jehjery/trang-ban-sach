@@ -5,32 +5,43 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import jobbean.ACCbean;
+import jobbean.loaibean;
+import jobbean.sanphambean;
+import jobbo.loaibo;
+import jobbo.sanphambo;
 
 public class main {
 
 	public static void main(String[] args) {
+		loaibo lbo= new loaibo();
+		ArrayList<loaibean> listloai = lbo.findAll();
 		
-		// kết nối database 
-		MongoDatabase database = connectDB.getInstance();
-		MongoCollection<Document> collection = database.getCollection("tbACC"); // lấy bảng 
-
+		sanphambo spbo= new sanphambo();
+		ArrayList<sanphambean> listsp = spbo.findAll();
 		
-//		 đọc dữ liệu
-		ArrayList<ACCbean> list = new ArrayList<>();
-	
-		collection.find().forEach(doc -> 
-		{	
-			Gson gson = new Gson();
-			ACCbean user = gson.fromJson(doc.toJson(), ACCbean.class);
-			list.add(user);
-			System.out.println(doc);
-			
-		});
-		for(ACCbean s: list) {
-			System.out.print(s.getTendangnhap());
-			System.out.print(s.getMatkhau());
-			System.out.print(s.getSolandang());
+		loaibo lbo1 = new loaibo();
+		
+		for (loaibean a:listloai)
+		{
+			lbo1.resetsoluong(a);
 		}
+		
+		
+		int d=0;
+	
+		for(sanphambean b:listsp)
+		{ 
+			for (loaibean a:listloai)
+			{
+				if(a.getMaloai().equals(b.getMaloai()))
+				lbo1.updatesoluong(a, b);
+				d++;
+			
+			}
+			
+		}
+		System.out.println("đã cập nhật :"+ d);
 	}
-
 }
+		
+

@@ -1,15 +1,27 @@
 package jobbean;
 
 public class ACCbean {
-	public ACCbean(String tendangnhap, String matkhau, int solandang) {
+
+
+
+	private String tendangnhap;
+	@Override
+	public String toString() {
+		return "ACCbean [tendangnhap=" + tendangnhap + ", matkhau=" + matkhau + ", fullname=" + fullname + ", namsinh="
+				+ namsinh + ", thangsinh=" + thangsinh + ", ngaysinh=" + ngaysinh + ", email=" + email + ", gioitinh="
+				+ gioitinh + "]";
+	}
+	public ACCbean(String tendangnhap, String matkhau, String fullname, int namsinh, int thangsinh, int ngaysinh,
+			String email, String gioitinh) {
 		super();
 		this.tendangnhap = tendangnhap;
 		this.matkhau = matkhau;
-		this.solandang = solandang;
-	}
-	@Override
-	public String toString() {
-		return "ACCbean [tendangnhap=" + tendangnhap + ", matkhau=" + matkhau + ", solandang=" + solandang + "]";
+		this.fullname = fullname;
+		this.namsinh = namsinh;
+		this.thangsinh = thangsinh;
+		this.ngaysinh = ngaysinh;
+		this.email = email;
+		this.gioitinh = gioitinh;
 	}
 	public String getTendangnhap() {
 		return tendangnhap;
@@ -23,13 +35,47 @@ public class ACCbean {
 	public void setMatkhau(String matkhau) {
 		this.matkhau = matkhau;
 	}
-	public int getSolandang() {
-		return solandang;
+	public String getFullname() {
+		return fullname;
 	}
-	public void setSolandang(int solandang) {
-		this.solandang = solandang;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
-	private String tendangnhap;
+	public int getNamsinh() {
+		return namsinh;
+	}
+	public void setNamsinh(int namsinh) {
+		this.namsinh = namsinh;
+	}
+	public int getThangsinh() {
+		return thangsinh;
+	}
+	public void setThangsinh(int thangsinh) {
+		this.thangsinh = thangsinh;
+	}
+	public int getNgaysinh() {
+		return ngaysinh;
+	}
+	public void setNgaysinh(int ngaysinh) {
+		this.ngaysinh = ngaysinh;
+	}
+	public String getemail() {
+		return email;
+	}
+	public void setemail(String email) {
+		this.email = email;
+	}
+	public String getGioitinh() {
+		return gioitinh;
+	}
+	public void setGioitinh(String gioitinh) {
+		this.gioitinh = gioitinh;
+	}
 	private String matkhau;
-	private int solandang;
+	private String fullname;
+	private int namsinh;
+	private int thangsinh;
+	private int ngaysinh;
+	private String email;
+	private String gioitinh;
 }

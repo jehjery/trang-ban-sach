@@ -13,4 +13,10 @@ public class ACCbo {
 	public void insert(ACCbean l) {
 		user.insert(l);
 	}
+	public void delete(String un) {
+		user.delete(un);
+	}
+	public void update(String un,ACCbean l) {
+		user.update1(un,l);
+	}
 }

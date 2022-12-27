@@ -32,8 +32,8 @@ public class Xemchitiet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
+			
 			String ngay=request.getParameter("ngay");
 			hoadonbo hdo = new hoadonbo();
 			ArrayList<hoadonbean> listhd = hdo.findAll();
@@ -50,8 +50,12 @@ public class Xemchitiet extends HttpServlet {
 					}
 				
 			}
+		
+			{
 			request.setAttribute("listhd", listhd);
 			request.getRequestDispatcher("Lichsumuahang.jsp").forward(request, response);
+			}
+		
 	}
 
 	/**

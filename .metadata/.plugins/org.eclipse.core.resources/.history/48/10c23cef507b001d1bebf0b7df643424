@@ -1,0 +1,16 @@
+package jobbean;
+
+public class ACCbean {
+	private String tendangnhap;
+	private String matkhau;
+	private int solandang;
+	private String fullname;
+	public ACCbean(String tendangnhap, String matkhau, int solandang, String fullname) {
+		super();
+		this.tendangnhap = tendangnhap;
+		this.matkhau = matkhau;
+		this.solandang = solandang;
+		this.fullname = fullname;
+	}
+
+}

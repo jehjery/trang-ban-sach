@@ -1,0 +1,39 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+import jobbean.loaibean;
+import jobdao.loaidao;
+import jobdao.sanphamdao;
+
+public class loaibo {
+	loaidao ldao= new loaidao();
+	sanphamdao spdao= new sanphamdao();
+	ArrayList<loaibean> ds;
+	public ArrayList<loaibean> getloai(){
+		  ds=ldao.getloai();
+		  return ds;
+	  }
+
+	public ArrayList<loaibean> findAll() {
+	
+		return ldao.findAll();
+	}
+	
+	public void insert(loaibean l) {
+		ldao.insert(l);
+	}
+	public void Update(loaibean l ) {
+		ldao.update(l);
+	}
+	public void delete(String maloai) {
+		ldao.delete(maloai);
+	}
+	public void updatesoluong(long soluong,String maloai) {
+		ldao.updatesoluong(soluong,maloai);
+	}
+	
+	
+}
+
+

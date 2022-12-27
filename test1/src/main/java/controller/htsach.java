@@ -39,10 +39,12 @@ public class htsach extends HttpServlet {
 		//lay cac tu khoa tim kiem
 		String maloai= request.getParameter("maloai");
 		String key= request.getParameter("key");
+		
 		int page = 1;
 		int pageSize = 15;
 		if(pageS != null ) page = Integer.parseInt(pageS);
 		if(pageSizeS != null ) pageSize = Integer.parseInt(pageSizeS);
+		
 		loaibo lbo = new loaibo();
 		sachbo sachbo = new sachbo();
 		//lay cac sach va loai sach

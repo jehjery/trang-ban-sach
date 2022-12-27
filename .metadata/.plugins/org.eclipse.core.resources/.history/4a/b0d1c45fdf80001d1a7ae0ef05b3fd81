@@ -1,0 +1,91 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+/**
+ * Servlet implementation class ThemItem
+ */
+@WebServlet("/ThemItem")
+public class ThemItem extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ThemItem() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		sanphambo sanpham= new sanphambo();
+		ArrayList<sanphambean> list = sanpham.findAll();
+		int d=0;	
+	    String maloai=request.getParameter("maloai");
+		String tensanpham=request.getParameter("Tensanpham");
+		String masanpham=request.getParameter("masanpham");
+		String tacgia=request.getParameter("tacgia");
+		String soluong=request.getParameter("soluong");
+		String gia=request.getParameter("gia");
+		String anh=request.getParameter("Anh");
+	
+
+
+
+		if(maloai==null)
+		{
+			 RequestDispatcher rd1=request.getRequestDispatcher("Themsanpham.jsp");
+			 rd1.forward(request, response);
+		}
+		else
+		{
+			for (sanphambean a: list)
+			{		
+				if ( (maloai.equals(a.getMaloai()) && (masanpham.equals(a.getMasanpham())) ) )
+					{
+					d++;
+					int soluongint = Integer.parseInt(soluong);
+					a.setSoluong(a.getSoluong()+soluongint);
+					}
+			}
+		if (d==0) 
+				{
+				 sanpham.insert(new sanphambean(masanpham,tensanpham,tacgia,Integer.parseInt(soluong),Integer.parseInt(gia),anh,maloai));
+				 
+				 RequestDispatcher rd1=request.getRequestDispatcher("loai_admin");
+				 rd1.forward(request, response);
+				 
+				}
+				 //}else //Neu dang nhap sai
+				 else	
+				 {
+					 RequestDispatcher rd1=request.getRequestDispatcher("loai_admin");
+					 rd1.forward(request, response);
+				 }
+		}
+		
+		}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

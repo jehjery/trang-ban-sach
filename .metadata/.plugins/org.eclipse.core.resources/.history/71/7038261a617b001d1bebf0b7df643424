@@ -1,0 +1,31 @@
+<%@page import="jobbean.loaibean"%>
+<%@page import="jobbean.ACCbean"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>danh sách các nick</h1>	
+	<% 	ArrayList<ACCbean> list = (ArrayList<ACCbean>)request.getAttribute("acc");
+		for(ACCbean l: list){ %> 
+		<div><%=l.getTendangnhap()%></div>
+		<div><%=l.getMatkhau()%></div>
+		<div><%=l.getSolandang()%></div>
+		<div><%=l.getFullname()%></div>
+		<% };%>
+		
+	<h1>danh sách các loai</h1>		
+	<% 	ArrayList<loaibean> listloai = (ArrayList<loaibean>)request.getAttribute("loai");
+		for(loaibean l: listloai){ %> 
+		<div><%=l.getMaloai()()%></div>
+		<div><%=l.getTenloai()()%></div>
+		<div><%=l.getSoluongsp()()%></div>
+		
+		<% };%>
+</body>
+</html>

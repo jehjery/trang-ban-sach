@@ -1,0 +1,12 @@
+package jobbean;
+
+public class sanphambean {
+	
+	private String masp;
+	private String tensp;
+	private String maloai;
+	private long soluong;
+	private long gia;
+	private String Anh;
+	private String nguongoc;
+}

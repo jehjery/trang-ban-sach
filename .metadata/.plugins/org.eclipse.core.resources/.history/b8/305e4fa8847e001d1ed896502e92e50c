@@ -1,0 +1,19 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+import jobbean.voucherbean;
+import jobdao.voucherdao;
+
+public class voucherBo {
+	voucherdao user=  new voucherdao();
+	public ArrayList<voucherbean> findAll() {
+		return user.findAll();
+	}
+	public void insert(voucherbean l) {
+		user.insert(l);
+	}
+	public ArrayList<voucherbean> findAll(int page, int pageSize) {
+		return user.findAll(page, pageSize);
+	}
+}

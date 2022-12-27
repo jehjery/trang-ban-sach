@@ -1,0 +1,7 @@
+package jobbean;
+
+public class voucherBean {
+	private String mavoucher;
+	private String tenvoucher;
+	private double giatri;
+}

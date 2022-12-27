@@ -1,0 +1,78 @@
+package jobdao;
+
+import java.util.ArrayList;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import com.google.gson.Gson;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
+import connectDB.connectDB;
+import jobbean.ACCbean;
+import jobbean.sanphambean;
+
+public class ACCdao {
+	MongoDatabase database = connectDB.getInstance();
+	MongoCollection<Document> Collection = database.getCollection("tbACC");
+	public ArrayList<ACCbean> getACC() {
+		
+		return null;
+	}
+
+	public ArrayList<ACCbean> findAll() {
+		ArrayList<ACCbean> listuser = new ArrayList<>();
+		Collection.find().forEach(doc ->  
+		{
+			Gson gson = new Gson();
+			ACCbean user = gson.fromJson(doc.toJson(), ACCbean.class);
+			listuser.add(user);
+		});
+//		for(ACCbean a : listuser)
+//			{System.out.println(a.getTendangnhap());}
+		return listuser;
+	}
+	
+
+	public void insert(ACCbean l) {
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		Collection.insertOne(doc);
+	}
+
+	
+	public Document update(ACCbean l) {
+		Bson filters = Filters.eq("tendangnhap", l.getTendangnhap());		
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		return Collection.findOneAndUpdate(filters, doc);
+	}
+	
+	public Document delete(String user) {
+		Bson filters = Filters.eq("tendangnhap", user);
+		return Collection.findOneAndDelete(filters);
+	}
+	public Document update1(ACCbean l) {
+		
+		Bson filters = Filters.eq("tendangnhap", l.getTendangnhap());		
+//		Gson gson = new Gson();
+//		Document doc = Document.parse(gson.toJson(l));
+		Bson updata= Updates.set("matkhau", l.getMatkhau());
+		Bson updata1= Updates.set("fullname", l.getFullname());
+		Bson updata2= Updates.set("nam", l.getNamsinh());
+		Bson updata3= Updates.set("thang", l.getThangsinh());
+		Bson updata4= Updates.set("ngay", l.getNgaysinh());
+		Bson updata5= Updates.set("masp", l.getMasp());
+		Bson updata6= Updates.set("soluong", l.getSoluong());
+		Document a= new Document();
+		a= collection.findOneAndUpdate(filters, updata);
+		a= collection.findOneAndUpdate(filters, updata1);
+		a= collection.findOneAndUpdate(filters, updata2);
+		a= collection.findOneAndUpdate(filters, updata3);
+		a= collection.findOneAndUpdate(filters, updata4);
+		a= collection.findOneAndUpdate(filters, updata5);
+		a= collection.findOneAndUpdate(filters, updata6);
+//		System.out.println(a);
+		return a;
+}

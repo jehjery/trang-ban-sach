@@ -1,0 +1,69 @@
+package jobdao;
+
+import java.util.ArrayList;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import com.google.gson.Gson;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
+import connectDB.connectDB;
+import jobbean.hoadonbean;
+
+public class Hoadondao {
+	MongoDatabase database = connectDB.getInstance();
+	MongoCollection<Document> Collection = database.getCollection("tbHoadon");
+	public ArrayList<hoadonbean> getuser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<hoadonbean> findAll() {
+		ArrayList<hoadonbean> dshoadon = new ArrayList<>();
+		Collection.find().forEach(doc ->  
+										{
+											Gson gson = new Gson();
+											hoadonbean hoadon = gson.fromJson(doc.toJson(), hoadonbean.class);
+											dshoadon.add(hoadon);
+										});						
+		return dshoadon;
+	}
+	public ArrayList<hoadonbean> FindAll(String nguoimua) {
+	Bson filter = Filters.eq("nguoimua", nguoimua);
+	ArrayList<hoadonbean> list = new ArrayList<>();
+	Collection.find(filter).forEach(doc -> 
+	{
+		Gson gson = new Gson();
+		hoadonbean sach = gson.fromJson(doc.toJson(), hoadonbean.class);
+		list.add(sach);
+	});	
+	return list;
+}
+
+	public void insert(hoadonbean l) {
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		Collection.insertOne(doc);
+	}
+
+	
+	public Document update(hoadonbean l) {
+		String s="Hoàn Thành";
+		Bson filters = Filters.eq("ngaythanhtoan", l.getNgaythanhtoan());	
+		Bson filters1 = Filters.eq("nguoimua", l.getNguoimua());
+		Bson upDATA = Updates.set("banking", s);
+		Document a = Collection.findOneAndUpdate(filters, upDATA);
+	
+		return 
+	}
+	
+	public void delete(hoadonbean l) {
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		Collection.deleteOne(doc);
+	}
+}

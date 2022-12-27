@@ -1,0 +1,69 @@
+package jobbean;
+
+public class sanphambean {
+	
+	private String masp;
+	private String tensp;
+	private String maloai;
+	private long soluong;
+	private long gia;
+	private String Anh;
+	private String nguongoc;
+	public sanphambean(String masp, String tensp, String maloai, long soluong, long gia, String anh, String nguongoc) {
+		super();
+		this.masp = masp;
+		this.tensp = tensp;
+		this.maloai = maloai;
+		this.soluong = soluong;
+		this.gia = gia;
+		Anh = anh;
+		this.nguongoc = nguongoc;
+	}
+	@Override
+	public String toString() {
+		return "sanphambean [masp=" + masp + ", tensp=" + tensp + ", maloai=" + maloai + ", soluong=" + soluong
+				+ ", gia=" + gia + ", Anh=" + Anh + ", nguongoc=" + nguongoc + "]";
+	}
+	public String getMasp() {
+		return masp;
+	}
+	public void setMasp(String masp) {
+		this.masp = masp;
+	}
+	public String getTensp() {
+		return tensp;
+	}
+	public void setTensp(String tensp) {
+		this.tensp = tensp;
+	}
+	public String getMaloai() {
+		return maloai;
+	}
+	public void setMaloai(String maloai) {
+		this.maloai = maloai;
+	}
+	public long getSoluong() {
+		return soluong;
+	}
+	public void setSoluong(long soluong) {
+		this.soluong = soluong;
+	}
+	public long getGia() {
+		return gia;
+	}
+	public void setGia(long gia) {
+		this.gia = gia;
+	}
+	public String getAnh() {
+		return Anh;
+	}
+	public void setAnh(String anh) {
+		Anh = anh;
+	}
+	public String getNguongoc() {
+		return nguongoc;
+	}
+	public void setNguongoc(String nguongoc) {
+		this.nguongoc = nguongoc;
+	}
+}

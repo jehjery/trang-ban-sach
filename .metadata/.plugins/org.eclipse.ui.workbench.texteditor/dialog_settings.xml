@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="int"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="int"/>
-			<item value="system"/>
-			<item value="800px"/>
-			<item value="800"/>
+			<item value="comment"/>
+			<item value="collection"/>
+			<item value="Featured Products"/>
+			<item value="sanpham"/>
+			<item value="loai"/>
+			<item value="sach"/>
+			<item value="go "/>
+			<item value="blog"/>
+			<item value="hoadon"/>
+			<item value="loaibean"/>
+			<item value="ACC"/>
+			<item value="ACCdao"/>
+			<item value="user"/>
+			<item value="style.css"/>
+			<item value="blogbean"/>
 		</list>
 		<list key="replacehistory">
-			<item value=""/>
+			<item value="Collection"/>
+			<item value="blog"/>
+			<item value="sanpham"/>
+			<item value="liker"/>
+			<item value="hoadonbean"/>
+			<item value="hoadon"/>
+			<item value="Loai"/>
+			<item value="ACC"/>
+			<item value="voucher"/>
+			<item value="voucherBean"/>
+			<item value="CartBean"/>
+			<item value="likerbean"/>
+			<item value="blogdao"/>
+			<item value="blogbean"/>
+			<item value="soluongsanpham"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1119"/>
-		<item key="DIALOG_Y_ORIGIN" value="682"/>
+		<item key="DIALOG_X_ORIGIN" value="1420"/>
+		<item key="DIALOG_Y_ORIGIN" value="508"/>
 		<item key="DIALOG_WIDTH" value="511"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="567"/>
+		<item key="DIALOG_Y_ORIGIN" value="314"/>
 	</section>
 </section>

@@ -1,17 +1,15 @@
 package jobbean;
 
 public class loaibean {
-    private String maloai;
-    private String tenloai;
-    //Phat sinh ham tao (ko tham so, day du tham so), cac ham get,set
-	public loaibean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public loaibean(String maloai, String tenloai) {
+    public loaibean(String maloai, String tenloai, int soluongsanpham) {
 		super();
 		this.maloai = maloai;
 		this.tenloai = tenloai;
+		this.soluongsanpham = soluongsanpham;
+	}
+	@Override
+	public String toString() {
+		return "loaibean [maloai=" + maloai + ", tenloai=" + tenloai + ", soluongsanpham=" + soluongsanpham + "]";
 	}
 	public String getMaloai() {
 		return maloai;
@@ -25,5 +23,16 @@ public class loaibean {
 	public void setTenloai(String tenloai) {
 		this.tenloai = tenloai;
 	}
+	public int getsoluongsanpham() {
+		return soluongsanpham;
+	}
+	public void setsoluongsanpham(int soluongsanpham) {
+		this.soluongsanpham = soluongsanpham;
+	}
+	private String maloai;
+    private String tenloai;
+    private int soluongsanpham;
+    //Phat sinh ham tao (ko tham so, day du tham so), cac ham get,set
+
     
 }

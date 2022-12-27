@@ -1,0 +1,90 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import jobbean.sanphambean;
+import jobbo.CartBo;
+import jobbo.sanphambo;
+
+/**
+ * Servlet implementation class dathang
+ */
+@WebServlet("/dathang")
+public class dathang extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public dathang() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String key=request.getParameter("masp");	
+		long sl=1;
+		String soluong=request.getParameter("soluong");
+		if(soluong!=null) { sl= Long.parseLong(soluong);}
+		HttpSession session= request.getSession();
+		if(session.getAttribute("dn")==null) 
+		{
+		RequestDispatcher rd=request.getRequestDispatcher("ktdn");
+	    rd.forward(request, response);
+	    }
+		else
+		{
+			CartBo gh;
+			//Neu mua lan dau
+			if(session.getAttribute("gio")==null){
+				gh= new CartBo();
+				session.setAttribute("gio", gh);
+			}
+			sanphambo sachbo = new sanphambo();
+			ArrayList<sanphambean> list = sachbo.findAll();
+			//b1: gan session vao 1 bien
+			gh=(CartBo) session.getAttribute("gio");
+			//b2: Thao tac trên bien: 
+			//b3: Luu gh vao session
+			
+			//tìm sách lấy các thuộc tính ra 
+		    int n=list.size();
+		    for(int i=0;i<n;i++){	
+		    	sanphambean s =list.get(i);
+		    	if (s.getMasp().equals(key))
+		    	{
+		    		gh.Them(s.getMasp(), s.getTensp(), sl , s.getGia(), s.getAnh());
+		    		break;
+		    		// tìm đúng 1 lần xong thoát vòng lặp, do m chưa thoát nỡ, nhớ 
+		    	}
+		    	
+		    }
+		    // ?? sao có vòng for ở đây , à tìm cái mã sách để thêm vô á, cái ni không cần nhá, vào trong nó có
+		    session.setAttribute("gio", gh);
+		    RequestDispatcher rd=request.getRequestDispatcher("CART.jsp");
+		    rd.forward(request, response);
+		}
+	    
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

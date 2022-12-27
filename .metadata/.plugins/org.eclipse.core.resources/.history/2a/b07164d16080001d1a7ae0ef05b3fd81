@@ -1,0 +1,22 @@
+package jobbo;
+
+import java.util.ArrayList;
+import jobbean.hoadonbean;
+import jobdao.Hoadondao;
+public class hoadonbo {
+	Hoadondao hoadon=  new Hoadondao();
+	public ArrayList<hoadonbean> findAll() {
+		return hoadon.findAll();
+	}
+	public void insert(hoadonbean l) {
+		hoadon.insert(l);
+	}
+	
+	public void insert(hoadonbean l) {
+		hoadon.insert(l);
+	}
+	
+	public void delete(hoadonbean a) {
+		hoadon.delete(a);
+	}
+}

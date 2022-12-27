@@ -1,0 +1,17 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+import jobbean.ACCbean;
+import jobdao.blogdao;
+
+public class blogBo {
+	blogdao user=  new blogdao();
+	public ArrayList<blogbean> findAll() {
+		return user.findAll();
+	}
+	public void insert(ACCbean l) {
+		user.insert(l);
+	}
+}
+

@@ -1,0 +1,68 @@
+package jobControlller;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import jobbean.hoadonbean;
+import jobbo.CartBo;
+import jobbo.hoadonbo;
+
+
+
+/**
+ * Servlet implementation class Thanhtoan
+ */
+@WebServlet("/Thanhtoan")
+public class Thanhtoan extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Thanhtoan() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session= request.getSession();
+		hoadonbo  hoadon= new hoadonbo();
+		// lấy giỏ về 
+		CartBo gh=(CartBo) session.getAttribute("gio");
+		if(gh.TongTien()==0) 
+			{
+			RequestDispatcher rd=request.getRequestDispatcher("giohang.jsp");
+			rd.forward(request, response);
+			}
+		else
+		{
+		hoadon.insert(new hoadonbean(gh.TongTien(), request.getParameter("payment"),request.getAttribute("voucher") ,session.getAttribute("dn") , new Date(), gh.getds()));
+		// lưu vào csdl và xóa giỏ
+		session.setAttribute("gio", null);
+		}
+		RequestDispatcher rd=request.getRequestDispatcher("CART.jsp");
+		rd.forward(request, response);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

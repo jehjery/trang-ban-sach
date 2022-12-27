@@ -1,0 +1,38 @@
+package jobbean;
+
+public class loaibean {
+    public loaibean(String maloai, String tenloai, int soluongsp) {
+		super();
+		this.maloai = maloai;
+		this.tenloai = tenloai;
+		this.soluongsp = soluongsp;
+	}
+	@Override
+	public String toString() {
+		return "loaibean [maloai=" + maloai + ", tenloai=" + tenloai + ", soluongsp=" + soluongsp + "]";
+	}
+	public String getMaloai() {
+		return maloai;
+	}
+	public void setMaloai(String maloai) {
+		this.maloai = maloai;
+	}
+	public String getTenloai() {
+		return tenloai;
+	}
+	public void setTenloai(String tenloai) {
+		this.tenloai = tenloai;
+	}
+	public int getSoluongsp() {
+		return soluongsp;
+	}
+	public void setSoluongsp(int soluongsp) {
+		this.soluongsp = soluongsp;
+	}
+	private String maloai;
+    private String tenloai;
+    private int soluongsp;
+    //Phat sinh ham tao (ko tham so, day du tham so), cac ham get,set
+
+    
+}

@@ -1,0 +1,29 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+import jobbean.voucherBean;
+
+import jobdao.voucherDao;
+
+
+public class voucherBo {
+	voucherDao user=  new voucherDao();
+	public ArrayList<voucherBean> findAll() {
+		return user.findAll();
+	}
+	public void insert(voucherBean l) {
+		user.insert(l);
+	}
+	public ArrayList<voucherBean> findAll(int page, int pageSize) {
+		return user.findAll(page, pageSize);
+	}
+	public double checkVoucher(String mavoucher) {
+		ArrayList<voucherBean> ds = user.findAll();
+		for (voucherBean a:ds)
+		{
+			if(a.getMavoucher().equals(mavoucher)) return a.getGiatri();
+		}
+		return 0;
+	}
+}

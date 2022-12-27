@@ -49,10 +49,6 @@ public class giohang extends HttpServlet {
 			gh= new Giohang();
 			session.setAttribute("gio", gh);
 		}
-		
-		
-		
-		
 		//b1: gan session vao 1 bien
 		gh=(Giohang) session.getAttribute("gio");
 		//b2: Thao tac trên bien: 

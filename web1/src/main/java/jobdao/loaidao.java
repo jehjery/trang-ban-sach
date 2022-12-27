@@ -16,7 +16,7 @@ import connectDB.connectDB;
 
 public class loaidao {
 	MongoDatabase database = connectDB.getInstance();
-	MongoCollection<Document> Collection = database.getCollection("tbLoaiSach");
+	MongoCollection<Document> Collection = database.getCollection("tbloai");
 	public ArrayList<jobbean.loaibean> getloai() {
 		// TODO Auto-generated method stub
 		return null;
@@ -29,32 +29,40 @@ public class loaidao {
 			Gson gson = new Gson();
 			loaibean loai = gson.fromJson(doc.toJson(), loaibean.class);
 			listloai.add(loai);
-			System.out.println(listloai.size());
+//			System.out.println(listloai.size());
 		});
-		
 		return listloai;
 	}
-	
 
+	
 	public void insert(loaibean l) {
 		Gson gson = new Gson();
 		Document doc = Document.parse(gson.toJson(l));
 		Collection.insertOne(doc);
 	}
 
-	
+	 public Document updatesoluong(loaibean a,sanphambean b ) {		
+		Bson filters = Filters.eq("maloai",b.getMaloai());		
+		Bson updata= Updates.set("soluongsanpham", a.getsoluongsanpham()+b.getSoluong());
+		return Collection.findOneAndUpdate(filters, updata);
+	}
+	 public Document resetsoluong(loaibean a ) {		
+		Bson filters = Filters.eq("maloai",a.getMaloai());		
+		Bson updata= Updates.set("soluongsanpham", 0);
+		return Collection.findOneAndUpdate(filters, updata);
+	} 
+	 
 	public Document update(loaibean l) {
-		System.out.println(l.getMaloai());
-		Bson filters = Filters.eq("maloai", l.getMaloai());		
+//		System.out.println(l.getMaloai());
 //		Gson gson = new Gson();
 //		Document doc = Document.parse(gson.toJson(l));
+		Bson filters = Filters.eq("maloai", l.getMaloai());		
 		Bson updata= Updates.set("tenloai", l.getTenloai());
 		return Collection.findOneAndUpdate(filters, updata);
 	}
 	
 	public Document delete(String maloai) {
 		Bson filters = Filters.eq("maloai", maloai);		
-
 		return Collection.findOneAndDelete(filters);
 	}
 }

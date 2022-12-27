@@ -1,0 +1,113 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./sachonl.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+.form-label{
+    color: darkturquoise;
+    form-check-label{
+    color: darkturquoise!important;
+    }
+}
+</style>
+</head>
+<body>
+	<section class="header">
+		<a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+
+		<div>
+			<ul class="navbar">
+							<div class="search">
+					<form action="TimKiemcontroller">
+					<input name="key" class="input-search" type="text">
+					</form>
+				</div>
+				<div href="#" class="search-product">
+					<i class="fa fa-search " aria-hidden="true"></i>
+				</div>
+				<li><a  href="HOMEcontroller">Home</a></li>
+				<li><a  href="SHOPcontroller">Shop</a></li>
+				<li><a  href="BLOGcontroller">Blog</a></li>
+				<li><a href="ABOUTcontroller">About</a></li>
+				<li><a href="CONTACTcontroller">Contact</a></li>
+				<li class="lg-bag"><a href="dathang"><i
+						class="far fa-shopping-bag"></i></a></li>
+				<li class="use-Avatar"><i class="fa fa-user-circle Avatar"
+					aria-hidden="true"></i>
+					<li><a href="ktdn">Login</a></li>
+					<li><a class="active" href="dangky">sign up</a></li>	
+					</ul>
+					</li>
+				<a href="#" class="close"><i class="far fa-times"></i></a>
+			</ul>
+		</div>
+		<div class="mobile">
+			<a href="cart.html"><i class="menu far fa-shopping-bag"></i></a>
+			<div class="bar">
+				<i class="baricon fas fa-outdent"></i>
+			</div>
+		</div>
+	</section>
+	<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form action="ktdn" method="post" style="    margin-top: 20rem;">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+         	
+         	 <input name="txtun" type="text" id="form1Example13" class="form-control form-control-lg" />
+            
+            <label class="form-label" for="form1Example13">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            
+            <input name="txtpass" type="password" id="form1Example23" class="form-control form-control-lg" />
+            
+            <label class="form-label" for="form1Example23">Password</label>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+              <label class="form-check-label" for="form1Example3"> Remember me </label>
+            </div>
+            <a class="xxx" href="#!">Forgot password?</a>
+          </div>
+
+          <!-- Submit button -->
+          <input name="butlogin"  type="submit" value="login" 
+                    class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"></input>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
+
+          <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="#!"
+            role="button">
+            <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+          </a>
+          <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="#!"
+            role="button">
+            <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+	</div>
+</body>
+</html>

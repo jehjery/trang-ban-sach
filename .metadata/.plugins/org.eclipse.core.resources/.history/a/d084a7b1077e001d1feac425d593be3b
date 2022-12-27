@@ -1,0 +1,10 @@
+package jobbean;
+
+public class blogbean {
+	private String mablog;
+	private String tieude;
+	private String phude;
+	private String noidung;
+	private String tacgia;
+	private String hinhanh;
+}

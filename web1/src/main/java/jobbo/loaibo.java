@@ -3,16 +3,21 @@ package jobbo;
 import java.util.ArrayList;
 
 import jobbean.loaibean;
+import jobbean.sanphambean;
 import jobdao.loaidao;
+import jobdao.sanphamdao;
 
 public class loaibo {
 	loaidao ldao= new loaidao();
+	sanphamdao spdao= new sanphamdao();
 	ArrayList<loaibean> ds;
-	  public ArrayList<loaibean> getloai(){
+	public ArrayList<loaibean> getloai(){
 		  ds=ldao.getloai();
 		  return ds;
 	  }
+
 	public ArrayList<loaibean> findAll() {
+	
 		return ldao.findAll();
 	}
 	
@@ -25,6 +30,13 @@ public class loaibo {
 	public void delete(String maloai) {
 		ldao.delete(maloai);
 	}
+	public void updatesoluong(loaibean a,sanphambean b) {
+		ldao.updatesoluong(a,b);
+	}
+	public void resetsoluong(loaibean a) {
+		ldao.resetsoluong(a);
+	}
+	
 	
 }
 

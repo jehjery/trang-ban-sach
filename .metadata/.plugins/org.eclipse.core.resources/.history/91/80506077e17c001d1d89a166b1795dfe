@@ -1,0 +1,13 @@
+package jobbean;
+
+public class ACCbean {
+
+	private String tendangnhap;
+	private String matkhau;
+	private String fullname;
+	private int namsinh;
+	private int thangsinh;
+	private int ngaysinh;
+	private String Email;
+	private String gioitinh;
+}

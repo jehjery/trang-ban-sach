@@ -1,0 +1,81 @@
+package jobbean;
+
+public class ACCbean {
+
+	@Override
+
+	private String tendangnhap;
+	@Override
+	public String toString() {
+		return "ACCbean [tendangnhap=" + tendangnhap + ", matkhau=" + matkhau + ", fullname=" + fullname + ", namsinh="
+				+ namsinh + ", thangsinh=" + thangsinh + ", ngaysinh=" + ngaysinh + ", Email=" + Email + ", gioitinh="
+				+ gioitinh + "]";
+	}
+	public ACCbean(String tendangnhap, String matkhau, String fullname, int namsinh, int thangsinh, int ngaysinh,
+			String email, String gioitinh) {
+		super();
+		this.tendangnhap = tendangnhap;
+		this.matkhau = matkhau;
+		this.fullname = fullname;
+		this.namsinh = namsinh;
+		this.thangsinh = thangsinh;
+		this.ngaysinh = ngaysinh;
+		Email = email;
+		this.gioitinh = gioitinh;
+	}
+	public String getTendangnhap() {
+		return tendangnhap;
+	}
+	public void setTendangnhap(String tendangnhap) {
+		this.tendangnhap = tendangnhap;
+	}
+	public String getMatkhau() {
+		return matkhau;
+	}
+	public void setMatkhau(String matkhau) {
+		this.matkhau = matkhau;
+	}
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+	public int getNamsinh() {
+		return namsinh;
+	}
+	public void setNamsinh(int namsinh) {
+		this.namsinh = namsinh;
+	}
+	public int getThangsinh() {
+		return thangsinh;
+	}
+	public void setThangsinh(int thangsinh) {
+		this.thangsinh = thangsinh;
+	}
+	public int getNgaysinh() {
+		return ngaysinh;
+	}
+	public void setNgaysinh(int ngaysinh) {
+		this.ngaysinh = ngaysinh;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String getGioitinh() {
+		return gioitinh;
+	}
+	public void setGioitinh(String gioitinh) {
+		this.gioitinh = gioitinh;
+	}
+	private String matkhau;
+	private String fullname;
+	private int namsinh;
+	private int thangsinh;
+	private int ngaysinh;
+	private String Email;
+	private String gioitinh;
+}

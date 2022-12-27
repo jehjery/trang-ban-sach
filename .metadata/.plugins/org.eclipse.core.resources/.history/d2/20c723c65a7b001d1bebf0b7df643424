@@ -1,0 +1,58 @@
+package jobbo;
+
+import java.util.ArrayList;
+
+
+public class sanphambo {
+	  sanphamdao sdao=new sanphamdao();
+	    ArrayList<sanphambean> ds;
+	    
+	    public ArrayList<sanphambean> getsanpham(){
+	    	return ds;
+	    }
+	    public ArrayList<sanphambean> TimMa(String maloai, ArrayList<sanphambean> ds1){
+			ArrayList<sanphambean> tam= new ArrayList<sanphambean>();
+			if ((ds1!=null)&& (ds1.size()!=0))
+			for(sanphambean s: ds1)
+				if(s.getMaloai().equals(maloai))
+					tam.add(s);
+			return tam;
+		}
+		public ArrayList<sanphambean> Tim(String key,ArrayList<sanphambean> ds1){
+			ArrayList<sanphambean> tam= new ArrayList<sanphambean>();
+			for(sanphambean s: ds1) {
+				if(s.getTensanpham().toLowerCase().trim().contains(key.toLowerCase().trim()) ||
+				s.getTacgia().toLowerCase().trim().contains(key.toLowerCase().trim()) ||
+				s.getMaloai().toLowerCase().trim().contains(
+						key.toLowerCase().trim())) {
+					tam.add(s);
+				}
+				if(s.getMasanpham().toLowerCase().trim().contains(key.toLowerCase().trim()) ||
+						s.getTacgia().toLowerCase().trim().contains(key.toLowerCase().trim()) ||
+						s.getMaloai().toLowerCase().trim().contains(
+								key.toLowerCase().trim())) {
+							tam.add(s);
+						}
+			}
+			return tam;
+		}
+		public ArrayList<sanphambean> findAll() {
+			return sdao.findAll();
+		}
+		
+		public ArrayList<sanphambean> findAll(int page, int pageSize) {
+			return sdao.findAll(page, pageSize);
+		}
+		public ArrayList<sanphambean> findloai(String maloai) {
+			return sdao.Findloai(maloai);
+		}
+		public void delete(String masanpham) {
+			sdao.delete(masanpham);
+		}
+		public void insert(sanphambean a) {
+			sdao.insert(a);
+		}
+		public void update(sanphambean a) {
+			sdao.update(a);
+		}
+	}

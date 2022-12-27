@@ -1,0 +1,15 @@
+package jobbean;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+
+
+public class hoadonbean {
+	  private long sotien;
+	  private String banking;
+	  private String voucher;
+	  private String nguoimua;
+	  public Date ngaythanhtoan;
+	  private ArrayList<CartBean> listsp;
+}

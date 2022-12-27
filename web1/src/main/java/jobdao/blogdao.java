@@ -1,0 +1,71 @@
+package jobdao;
+
+import java.util.ArrayList;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import com.google.gson.Gson;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+
+import connectDB.connectDB;
+import jobbean.blogbean;
+
+
+
+public class blogdao {
+	MongoDatabase database = connectDB.getInstance();
+	MongoCollection<Document> Collection = database.getCollection("tbBlog");
+	public ArrayList<jobbean.blogbean> getloai() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<blogbean> findAll() {
+		ArrayList<blogbean> listloai = new ArrayList<>();
+		Collection.find().forEach(doc ->  
+		{
+			Gson gson = new Gson();
+			blogbean loai = gson.fromJson(doc.toJson(), blogbean.class);
+			listloai.add(loai);
+//			System.out.println(listloai.size());
+		});
+		return listloai;
+	}
+	public ArrayList<blogbean> findAll(int page, int pageSize) {
+		ArrayList<blogbean> list = new ArrayList<>();
+		Collection.find().skip(pageSize*(page-1)).limit(pageSize).forEach(doc ->  
+		{
+			Gson gson = new Gson();
+			blogbean loai = gson.fromJson(doc.toJson(), blogbean.class);
+			list.add(loai);
+		});
+		return list;
+	}
+	
+	public void insert(blogbean l) {
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		Collection.insertOne(doc);
+	}
+
+	
+	 
+//	public Document update(blogbean l) {
+////		System.out.println(l.getMaloai());
+////		Gson gson = new Gson();
+////		Document doc = Document.parse(gson.toJson(l));
+//		
+//		Bson filters = Filters.eq("maloai", l.getMaloai());		
+//		Bson updata= Updates.set("tenloai", l.getTenloai());
+//		return Collection.findOneAndUpdate(filters, updata);
+//	}
+//	
+	public Document delete(String maloai) {
+		Bson filters = Filters.eq("mablog", maloai);		
+		return Collection.findOneAndDelete(filters);
+	}
+//}
+}

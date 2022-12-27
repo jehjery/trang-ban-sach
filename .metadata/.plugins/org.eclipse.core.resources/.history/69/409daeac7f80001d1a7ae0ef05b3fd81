@@ -1,0 +1,54 @@
+package jobdao;
+
+import java.util.ArrayList;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import com.google.gson.Gson;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import connectDB.connectDB;
+import jobbean.ACCbean;
+
+public class ACCdao {
+	MongoDatabase database = connectDB.getInstance();
+	MongoCollection<Document> Collection = database.getCollection("tbACC");
+	public ArrayList<ACCbean> getACC() {
+		
+		return null;
+	}
+
+	public ArrayList<ACCbean> findAll() {
+		ArrayList<ACCbean> listuser = new ArrayList<>();
+		Collection.find().forEach(doc ->  
+		{
+			Gson gson = new Gson();
+			ACCbean user = gson.fromJson(doc.toJson(), ACCbean.class);
+			listuser.add(user);
+		});
+//		for(ACCbean a : listuser)
+//			{System.out.println(a.getTendangnhap());}
+		return listuser;
+	}
+	
+
+	public void insert(ACCbean l) {
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		Collection.insertOne(doc);
+	}
+
+	
+	public Document update(ACCbean l) {
+		Bson filters = Filters.eq("username", l.getTendangnhap());		
+		Gson gson = new Gson();
+		Document doc = Document.parse(gson.toJson(l));
+		return Collection.findOneAndUpdate(filters, doc);
+	}
+	
+	public Document delete(String user) {
+		Bson filters = Filters.eq("tendangnhap", user);
+		System.out.println("đã xóa");
+		return Collection.findOneAndDelete(filters);
+	}
+}

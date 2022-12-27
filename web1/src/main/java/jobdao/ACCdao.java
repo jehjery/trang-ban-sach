@@ -7,8 +7,11 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
 import connectDB.connectDB;
 import jobbean.ACCbean;
+
 
 public class ACCdao {
 	MongoDatabase database = connectDB.getInstance();
@@ -40,15 +43,39 @@ public class ACCdao {
 
 	
 	public Document update(ACCbean l) {
-		Bson filters = Filters.eq("username", l.getTendangnhap());		
+		Bson filters = Filters.eq("tendangnhap", l.getTendangnhap());		
 		Gson gson = new Gson();
 		Document doc = Document.parse(gson.toJson(l));
 		return Collection.findOneAndUpdate(filters, doc);
 	}
 	
 	public Document delete(String user) {
-		Bson filters = Filters.eq("username", user);		
-
+		Bson filters = Filters.eq("tendangnhap", user);
 		return Collection.findOneAndDelete(filters);
 	}
+	public Document update1(String un, ACCbean l) {
+		
+		Bson filters = Filters.eq("tendangnhap", un);		
+//		Gson gson = new Gson();
+//		Document doc = Document.parse(gson.toJson(l));
+		Bson updata7= Updates.set("tendangnhap", l.getTendangnhap());
+		Bson updata= Updates.set("matkhau", l.getMatkhau());
+		Bson updata1= Updates.set("fullname", l.getFullname());
+		Bson updata2= Updates.set("nam", l.getNamsinh());
+		Bson updata3= Updates.set("thang", l.getThangsinh());
+		Bson updata4= Updates.set("ngay", l.getNgaysinh());
+		Bson updata5= Updates.set("email", l.getemail());
+		Bson updata6= Updates.set("gioitinh", l.getGioitinh());
+		Document a= new Document();
+		a= Collection.findOneAndUpdate(filters, updata);
+		a= Collection.findOneAndUpdate(filters, updata1);
+		a= Collection.findOneAndUpdate(filters, updata2);
+		a= Collection.findOneAndUpdate(filters, updata3);
+		a= Collection.findOneAndUpdate(filters, updata4);
+		a= Collection.findOneAndUpdate(filters, updata5);
+		a= Collection.findOneAndUpdate(filters, updata6);
+		a= Collection.findOneAndUpdate(filters, updata7);
+		System.out.println(a);
+		return a;
+}
 }

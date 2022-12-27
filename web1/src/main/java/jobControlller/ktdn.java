@@ -1,6 +1,10 @@
 package jobControlller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -31,6 +35,15 @@ public class ktdn extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+//    public static String ecrypt(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException{ 
+//    	String enrtext; 
+//    	MessageDigest msd=MessageDigest.getInstance("MD5"); 
+//    	byte[] srctextbyte=text.getBytes("UTF-8"); 
+//    	byte[] enrtextbyte=msd.digest(srctextbyte); 
+//    	BigInteger big = new BigInteger(1, enrtextbyte); 
+//    	enrtext=big.toString(16); 
+//    	return enrtext; }
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ACCbo user= new ACCbo();
@@ -40,33 +53,44 @@ public class ktdn extends HttpServlet {
 		HttpSession session= request.getSession();
 	    String un=request.getParameter("txtun");
 		String pass=request.getParameter("txtpass");
-		String lg=request.getParameter("lg");
+		String mkmahoa=null;
+		
 		
 //		if ((lg!=null)||(session.getAttribute("dn")==null)) session.setAttribute("dn","");
-		session.setAttribute("dn",un);
+		
 //		if(un.equals(dn)&&pass.equals("123")){//Neu dang nhap dung
 			//Mo trang maytinh.jsp
 		if ((pass!=null)&&(un!=null))
 		{
-		for (ACCbean a: listuser)
-			{		
-				if( (pass.equals(a.getMatkhau()) ) && (un.equals(a.getTendangnhap())) )
-					{
-					d++;
-					}
+			if(un.equals("1111")&&(pass.equals("2222"))) 
+			{
+				RequestDispatcher rd1=request.getRequestDispatcher("ADMINcontroller");
+				 rd1.forward(request, response);
 			}
-		if (d>1) {RequestDispatcher rd1=request.getRequestDispatcher("Home.jsp");
-				 rd1.forward(request, response);}
-				 //}else //Neu dang nhap sai
-				 else	
-				 {
-					 RequestDispatcher rd1=request.getRequestDispatcher("login.jsp");
-					 rd1.forward(request, response);
-				 }
-		
+			else 
+			{
+				for (ACCbean a: listuser)
+				{		
+					if( (pass.equals(a.getMatkhau()) ) && (un.equals(a.getTendangnhap())) )
+						{
+						session.setAttribute("dn",a.getFullname());
+						session.setAttribute("acc",a);
+						d++;
+						}
+				}
+			if (d>1) {RequestDispatcher rd1=request.getRequestDispatcher("HOMEcontroller");
+					 rd1.forward(request, response);}
+					 //}else //Neu dang nhap sai
+					 else	
+					 {
+						 RequestDispatcher rd1=request.getRequestDispatcher("login.jsp");
+						 rd1.forward(request, response);
+					 }
+			}
 		}
 		 else	
-		 {
+		 {	 
+			 session.removeAttribute("dn");
 			 RequestDispatcher rd1=request.getRequestDispatcher("login.jsp");
 			 rd1.forward(request, response);
 		 }

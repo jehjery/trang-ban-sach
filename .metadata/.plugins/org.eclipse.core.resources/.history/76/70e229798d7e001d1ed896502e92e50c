@@ -1,0 +1,12 @@
+package jobbean;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.time.LocalDate;
+
+
+public class hoadonbean {
+	  private long sotien;
+	  public Date ngaythanhtoan;
+	  private ArrayList<giohangbean> listsach;
+}
